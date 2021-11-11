@@ -88,7 +88,10 @@ $("#remove-tasks").on("click", function() {
     tasks[key].length = 0;
     $("#list-" + key).empty();
   }
-  saveTasks();
+  saveTasks()  
+  $(".list-group").on("click", "p", function() {
+    console.log("<p> was clicked");
+  });;
 });
 
 // load tasks for the first time
