@@ -107,17 +107,21 @@ $(".list-group").on("blur", "textarea", function(){
    var text = $(this)
    .val()
    .trim();
+
    //get the parent ul's id attribute
    var status = $(this)
    .closest(".list-group")
    .attr("id")
    .replace("list-", "");
+
    // get the task's position in the list of other li elements
    var index = $(this)
    .closest(".list-group-item")
    .index();
+
    tasks[status][index].text = text;
    saveTasks();
+
    // recreate p element 
    var taskp = $("<p>")
    .addClass("m-1")
@@ -125,8 +129,9 @@ $(".list-group").on("blur", "textarea", function(){
 
    //replace textarea with p area element 
    $(this).replaceWith(taskP);
- });
 
+});
+ 
  //due date was clicked 
  $(".list-group").on("click", "span", function(){
    // get current text
@@ -149,3 +154,4 @@ $(".list-group").on("blur", "textarea", function(){
 
 // load tasks for the first time
 loadTasks();
+
