@@ -223,8 +223,8 @@ $(".list-group").on("blur", "textarea", function(){
    },
    update: function(event) {
     // array to store the task data in
-    var tempArr = [];
-
+          var tempArr = [];
+          
      //loop over current set of children in sortable list
      $(this).children().each(function() {
       var text = $(this)
@@ -232,26 +232,30 @@ $(".list-group").on("blur", "textarea", function(){
       .text()
       .trim();
 
-      //trim down list's ID to match object property
-      var arrName = $(this)
-        .attr("id")
-        .replace("list-", "");
-
-      //update array on tasks object and save
-      tasks[arrName] = tempArr;
-      saveTasks();
-
       var date = $(this)
       .find("span")
       .text()
       .trim();
 
+
     // add task data to the temp arrays as an object
     tempArr.push({
       text: text,
       date: date
+
     });
-     });
+  });
+
+    //trim down list's ID to match object property
+    var arrName = $(this)
+      .attr("id")
+      .replace("list-", "");
+
+    //update array on tasks object and save
+    tasks[arrName] = tempArr;
+    saveTasks();
+
+ 
    }
  });
 
