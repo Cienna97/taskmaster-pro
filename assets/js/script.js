@@ -97,9 +97,11 @@ $(".list-group").on("click", "p", function(){
   var text = $(this)
   .text()
   .trim();
+  
   var textInput = $("<textarea>")
   .addClass("form-control")
   .val(text);
+
   $(this).replaceWith(textInput);
   textInput.trigger("focus");
 });
@@ -125,13 +127,13 @@ $(".list-group").on("blur", "textarea", function(){
    saveTasks();
 
    // recreate p element 
-   var taskp = $("<p>")
+   var taskP = $("<p>")
    .addClass("m-1")
    .text(text);
 
    //replace textarea with p area element 
    $(this).replaceWith(taskP);
-
+  
 });
 
 
@@ -294,6 +296,11 @@ $(".list-group").on("blur", "textarea", function(){
    }
  };
 
+ setInterval(function() {
+  $(".card .list-group-item").each(function(index, el){ 
+    auditTask(el);
+  });
+ }, (1000 * 60) * 30);
 
 // load tasks for the first time
 loadTasks();
